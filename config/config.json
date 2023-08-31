@@ -3,7 +3,7 @@
     "username": "yvjwudje",
     "password": "9bxmbiL59B1C1QgCii70CDRP5kA7JPyV",
     "database": "yvjwudje",
-    "host": "http://hansken.db.elephantsql.com",
+    "host": "hansken.db.elephantsql.com",
     "dialect": "postgres"
   },
   "test": {
