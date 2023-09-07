@@ -18,15 +18,24 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	session({
-		secret: 'SoS3cr3tItC4anN0tBe8rok3n',
+		secret: 'your-secret-key',
 		resave: false,
 		saveUninitialized: true,
-		store: sequelizeSessionStore,
-		cookie: {
-			maxAge: 1440000,
-		},
+		cookie: { maxAge: 10800000 },
 	})
 );
+
+const isLoggedIn = (req, res, next) => {
+	if (req.session.user) {
+		next();
+	} else {
+		res.redirect('/');
+	}
+};
+
+app.get('/display/*', isLoggedIn);
+
+app.use(express.static(__dirname + '/public'));
 
 //USERS
 //create new user
@@ -116,12 +125,24 @@ app.delete('/users/delete', (req, res) => {
 	}
 });
 
+//get user photo
+app.get('/users/info', (req, res) => {
+	if (req.session.user) {
+		Users.findOne({
+			attributes: [firstName, lastName, email, userPhoto],
+			where: { id: req.session.user.id },
+		}).then((photo) => {
+			res.json(photo);
+		});
+	}
+});
+
 //INVENTORY
 
 //get all items from specific user
-app.get('/inventory', (req, res) => {
+app.get('/inventory', async (req, res) => {
 	if (req.session.user) {
-		Inventory.findAll({
+		await Inventory.findAll({
 			attributes: ['id', 'item', 'category', 'measurement', 'measurementType'],
 			where: { userId: req.session.user.id },
 		}).then((items) => {
