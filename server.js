@@ -308,5 +308,5 @@ app.post('/inventory/search', (req, res) => {
 });
 
 app.listen(PORT, () => {
-	console.log('App started in port 3000');
+	console.log('App started in port ' + PORT);
 });
