@@ -105,14 +105,25 @@ app.get('/logout', (req, res) => {
 app.put('/users/settings', (req, res) => {
 	if (req.session.user) {
 		const { firstName, lastName } = req.body;
-		Users.update(
-			{ firstName, lastName },
-			{
-				where: {
-					id: req.session.user.id,
-				},
-			}
-		)
+		const updateFields = {};
+
+		if (firstName) {
+			updateFields.firstName = firstName;
+		}
+
+		if (lastName) {
+			updateFields.lastName = lastName;
+		}
+
+		if (Object.keys(updateFields).length === 0) {
+			return res.json({ error: 'No fields to update' });
+		}
+
+		Users.update(updateFields, {
+			where: {
+				id: req.session.user.id,
+			},
+		})
 			.then((result) => {
 				console.log(result);
 				res.json({});
@@ -226,13 +237,27 @@ app.put('/inventory/:id', (req, res) => {
 		const { id } = req.params;
 		const { measurement, measurementType } = req.body;
 
+		const updateFields = {};
+
+		if (measurement) {
+			updateFields.measurement = measurement;
+		}
+
+		if (measurementType) {
+			updateFields.measurementType = measurementType;
+		}
+
+		if (Object.keys(updateFields).length === 0) {
+			return res.json({ error: 'No fields to update' });
+		}
+
 		if (measurement < 0) {
 			return res.json({
 				error: 'Measurement can not be less than 0',
 			});
 		}
 
-		Inventory.update({ measurement, measurementType }, { where: { id } })
+		Inventory.update(updateFields, { where: { id } })
 			.then((result) => {
 				console.log(result);
 				res.json({});
