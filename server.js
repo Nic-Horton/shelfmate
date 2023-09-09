@@ -5,6 +5,7 @@ const { Op } = require('sequelize');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const SessionStore = require('express-session-sequelize')(session.Store);
+const PORT = process.env.PORT || 3000;
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -306,6 +307,6 @@ app.post('/inventory/search', (req, res) => {
 	}
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
 	console.log('App started in port 3000');
 });
