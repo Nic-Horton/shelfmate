@@ -140,9 +140,9 @@ app.get('/users/info', (req, res) => {
 //INVENTORY
 
 //get all items from specific user
-app.get('/inventory', async (req, res) => {
+app.get('/inventory', (req, res) => {
 	if (req.session.user) {
-		await Inventory.findAll({
+		Inventory.findAll({
 			attributes: ['id', 'item', 'category', 'measurement', 'measurementType'],
 			where: { userId: req.session.user.id },
 		}).then((items) => {
@@ -180,6 +180,20 @@ app.delete('/inventory/:id', (req, res) => {
 			console.log(results);
 			res.json({});
 		});
+	} else {
+		res.json({ success: false, message: 'please login' });
+	}
+});
+
+//delete all items for specified user
+app.delete('/inventoryAll', (req, res) => {
+	if (req.session.user) {
+		Inventory.destroy({ where: { userId: req.session.user.id } }).then(
+			(results) => {
+				console.log(results);
+				res.json({});
+			}
+		);
 	} else {
 		res.json({ success: false, message: 'please login' });
 	}
