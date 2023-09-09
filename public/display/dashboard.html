@@ -42,8 +42,8 @@
 				<ul class="space-y-2 font-medium">
 					<li>
 						<a
-							href="./dashboard.html"
-							class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+							href="#"
+							class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:bg-gray-700 group"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -111,8 +111,8 @@
 					</li>
 					<li>
 						<a
-							href="#"
-							class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:bg-gray-700 group"
+							href="./settings.html"
+							class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -166,80 +166,50 @@
 				</ul>
 			</div>
 		</aside>
-
 		<div class="p-4 sm:ml-64">
 			<div class="relative overflow-x-auto sm:rounded-lg">
-				<div class="p-4">
-					<form id="updateUserForm">
-						<div
-							class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+				<section class="bg-white dark:bg-gray-900">
+					<div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+						<h1
+							class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
 						>
-							<h5
-								class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+							Welcome to ShelfMate
+						</h1>
+						<p
+							class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400"
+						>
+							Where your Pantry finds its Shelf!
+						</p>
+						<div
+							class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4"
+						>
+							<a
+								href="./index.html"
+								class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
 							>
-								Settings
-							</h5>
-							<div class="grid grid-cols-1">
-								<div class="mb-6 mx-3 sm:w-8">
-									<label
-										for="firstName"
-										class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-										>First Name</label
-									>
-									<input
-										type="text"
-										id="firstName"
-										name="firstName"
-										required
-										placeholder=""
-										autocomplete="off"
-										class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+								Get started
+								<svg
+									class="w-3.5 h-3.5 ml-2"
+									aria-hidden="true"
+									xmlns="http://www.w3.org/2000/svg"
+									fill="none"
+									viewBox="0 0 14 10"
+								>
+									<path
+										stroke="currentColor"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M1 5h12m0 0L9 1m4 4L9 9"
 									/>
-								</div>
-								<div class="mb-6 mx-3">
-									<label
-										for="lastName"
-										class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-										>Last Name</label
-									>
-									<input
-										type="text"
-										id="lastName"
-										name="lastName"
-										required
-										placeholder=""
-										autocomplete="off"
-										class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-									/>
-								</div>
-								<div class="mb-6 mx-3">
-									<label
-										for="email"
-										class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-										>Email</label
-									>
-									<input
-										type="text"
-										id="email"
-										disabled
-										placeholder=""
-										class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-									/>
-								</div>
-							</div>
-							<button
-								type="submit"
-								class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border rounded border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white"
-							>
-								Update
-							</button>
+								</svg>
+							</a>
 						</div>
-					</form>
-				</div>
+					</div>
+				</section>
 			</div>
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>
-		<script src="./js/settings.js"></script>
 		<script src="./js/signout.js"></script>
 	</body>
 </html>
