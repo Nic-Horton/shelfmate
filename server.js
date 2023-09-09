@@ -21,6 +21,7 @@ app.use(
 		secret: 'your-secret-key',
 		resave: false,
 		saveUninitialized: true,
+		store: sequelizeSessionStore,
 		cookie: { maxAge: 10800000 },
 	})
 );
