@@ -27,6 +27,6 @@ updateUserForm.addEventListener('submit', (e) => {
 			lastName: e.target.lastName.value,
 		}),
 	}).then((res) => res.json());
-	location.reload();
 	getUserInfo();
+	location.reload();
 });

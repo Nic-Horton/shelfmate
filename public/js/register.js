@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				lastName: e.target.last_name.value,
 				email: e.target.email.value,
 				password: e.target.password.value,
-				userPhoto: e.target.file_input.value,
 			}),
 		})
 			.then((res) => res.json())
