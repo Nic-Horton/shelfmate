@@ -94,9 +94,9 @@ app.get('/logout', (req, res) => {
 //change user information
 app.put('/users/settings', (req, res) => {
 	if (req.session.user) {
-		const { firstName, lastName, userPhoto } = req.body;
+		const { firstName, lastName } = req.body;
 		Users.update(
-			{ firstName, lastName, userPhoto },
+			{ firstName, lastName },
 			{
 				where: {
 					id: req.session.user.id,
@@ -135,7 +135,7 @@ app.delete('/users/delete', (req, res) => {
 app.get('/users/info', (req, res) => {
 	if (req.session.user) {
 		Users.findOne({
-			attributes: [firstName, lastName, email, userPhoto],
+			attributes: ['firstName', 'lastName', 'email'],
 			where: { id: req.session.user.id },
 		}).then((info) => {
 			res.json(info);
