@@ -34,11 +34,11 @@ const isLoggedIn = (req, res, next) => {
 	}
 };
 
-const sessionRunning = (req, res) => {
+const sessionRunning = (req, res, next) => {
 	if (req.session.user) {
 		res.redirect('/display/dashboard.html');
 	} else {
-		res.redirect('/');
+		next();
 	}
 };
 
