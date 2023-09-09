@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
-				if (data) {
+				if (data.error) {
+					return alert('Email in use. Please try another email');
+				} else if (data) {
 					alert('Account created please sign in');
 					window.location.href = './index.html';
 				}
