@@ -34,6 +34,15 @@ const isLoggedIn = (req, res, next) => {
 	}
 };
 
+const sessionRunning = (req, res) => {
+	if (req.session.user) {
+		res.redirect('/display/dashboard.html');
+	} else {
+		res.redirect('/');
+	}
+};
+
+app.get('/', sessionRunning);
 app.get('/display/*', isLoggedIn);
 
 app.use(express.static(__dirname + '/public'));
