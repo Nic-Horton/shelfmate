@@ -12,37 +12,30 @@ document.getElementById('addItemForm').addEventListener('submit', (e) => {
 			measurement: e.target.quantity.value,
 			measurementType: e.target.measurementType.value,
 		}),
-	})
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data);
-		});
+	}).then((res) => res.json());
 
 	getAllItems();
 	location.reload();
 });
 
 function updateItem(id) {
-	console.log(id);
-	document.getElementById('updateForm').addEventListener('submit', (e) => {
-		e.preventDefault();
+	document
+		.getElementById('updateForm')
+		.addEventListener('submit', async (e) => {
+			e.preventDefault();
 
-		fetch(`/inventory/${id}`, {
-			method: 'PUT',
-			headers: { 'content-type': 'application/json' },
-			body: JSON.stringify({
-				measurement: e.target.quantity.value,
-				measurementType: e.target.measurementType.value,
-			}),
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				console.log(data);
-			});
+			await fetch(`/inventory/${id}`, {
+				method: 'PUT',
+				headers: { 'content-type': 'application/json' },
+				body: JSON.stringify({
+					measurement: e.target.quantity.value,
+					measurementType: e.target.measurementType.value,
+				}),
+			}).then((res) => res.json());
 
-		getAllItems();
-		location.reload();
-	});
+			getAllItems();
+			location.reload();
+		});
 }
 
 document.getElementById('searchBar').addEventListener('input', (e) => {

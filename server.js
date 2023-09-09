@@ -39,13 +39,19 @@ app.use(express.static(__dirname + '/public'));
 
 //USERS
 //create new user
-app.post('/register', (req, res) => {
+app.post('/register', async (req, res) => {
 	const { firstName, lastName, email, password } = req.body;
 
 	if (!email || !password || !firstName) {
 		return res.json({
 			error: 'email, password, or first name is must be entered ',
 		});
+	}
+
+	const emailExists = await Users.findOne({ where: { email } });
+
+	if (emailExists) {
+		return res.json({ error: 'email in use' });
 	}
 
 	let hashPassword = bcrypt.hashSync(password, saltRounds);
@@ -125,14 +131,14 @@ app.delete('/users/delete', (req, res) => {
 	}
 });
 
-//get user photo
+//get user info
 app.get('/users/info', (req, res) => {
 	if (req.session.user) {
 		Users.findOne({
 			attributes: [firstName, lastName, email, userPhoto],
 			where: { id: req.session.user.id },
-		}).then((photo) => {
-			res.json(photo);
+		}).then((info) => {
+			res.json(info);
 		});
 	}
 });
@@ -158,6 +164,11 @@ app.get('/inventory', (req, res) => {
 app.post('/inventory', (req, res) => {
 	if (req.session.user) {
 		const { item, category, measurement, measurementType } = req.body;
+		if (measurement < 0) {
+			return res.json({
+				error: 'Measurement can not be less than 0',
+			});
+		}
 		Inventory.create({
 			userId: req.session.user.id,
 			item,
@@ -204,6 +215,13 @@ app.put('/inventory/:id', (req, res) => {
 	if (req.session.user) {
 		const { id } = req.params;
 		const { measurement, measurementType } = req.body;
+
+		if (measurement < 0) {
+			return res.json({
+				error: 'Measurement can not be less than 0',
+			});
+		}
+
 		Inventory.update({ measurement, measurementType }, { where: { id } })
 			.then((result) => {
 				console.log(result);
