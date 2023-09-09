@@ -18,9 +18,10 @@ document.getElementById('login').addEventListener('submit', (e) => {
 	})
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data);
 			if (data.success) {
 				window.location.href = './display/index.html';
+			} else {
+				alert('Email or password is incorrect');
 			}
 		});
 });
