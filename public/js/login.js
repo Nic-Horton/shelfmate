@@ -19,7 +19,7 @@ document.getElementById('login').addEventListener('submit', (e) => {
 		.then((res) => res.json())
 		.then((data) => {
 			if (data.success) {
-				window.location.href = './display/index.html';
+				window.location.href = './display/dashboard.html';
 			} else {
 				alert('Email or password is incorrect');
 			}
