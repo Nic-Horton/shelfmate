@@ -59,7 +59,7 @@ async function getAllItems() {
 		.then((res) => res.json())
 		.then((data) => {
 			itemsList.innerHTML = renderItems(data);
-			initFlowbite();
+			initModals();
 		});
 }
 getAllItems();
