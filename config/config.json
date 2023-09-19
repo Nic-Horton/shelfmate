@@ -1,10 +1,7 @@
 {
   "development": {
-    "username": "lgrbdfas",
-    "password": "XSVPDWGW4g9ovDax9elsSHAHbPHdslUh",
-    "database": "lgrbdfas",
-    "host": "hansken.db.elephantsql.com",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "use_env_variable": "DB_URL"
   },
   "test": {
     "username": "root",
