@@ -19,3 +19,23 @@
     <a href="https://github.com/Nic-Horton/shelfmate/issues">Request Feature</a>
   </p>
 </div>
+
+ ## About
+ 
+  ShelfMate is a pantry inventory management system designed
+                    to streamline item tracking and management. Users can easily
+                    add, edit, and delete items in their inventory. It includes
+                    secure user authentication with bcrypt-encrypted passwords,
+                    utilizes PostgreSQL and Sequelize for database management.
+                    To enhance user convenience, the system employs session
+                    stores and cookies, ensuring data persistence throughout
+                    user sessions.
+
+## Built With
+
+* PostgreSQL
+* Sequelize
+* Express.js
+* Node.js
+* Tailwind CSS
+* Bcrypt
